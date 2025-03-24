@@ -838,6 +838,7 @@ public interface VmService extends MeasurableService {
             optional(vm().display().singleQxlPci());
             optional(vm().display().smartcardEnabled());
             optional(vm().display().type());
+            optional(vm().display().videoType());
             optional(vm().domain().name());
             optional(vm().externalHostProvider().id());
             optional(vm().highAvailability().enabled());
@@ -1281,6 +1282,7 @@ public interface VmService extends MeasurableService {
             optional(vm().customCpuModel());
             optional(vm().customEmulatedMachine());
             optional(vm().display().type());
+            optional(vm().display().videoType());
             optional(vm().domain().name());
             optional(vm().domain().user().password());
             optional(vm().domain().user().userName());
