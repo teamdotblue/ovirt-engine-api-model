@@ -1,7 +1,7 @@
 name: build
 on:
   push:
-    branches: [master]
+    branches: [master, update_documentation_generation]
   pull_request:
     branches: [master]
   workflow_dispatch:
@@ -61,7 +61,7 @@ jobs:
 
       - name: Set up Maven settings.xml
         uses: s4u/maven-settings-action@v3.1.0
-        if: ${{ github.event_name != 'pull_request' }}
+        if: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/update-documentation-generation' }}
         with:
           path: /root/.m2/settings.xml
           servers: |
@@ -72,7 +72,7 @@ jobs:
             }]
 
       - name: Publish snapshot
-        if: ${{ github.event_name != 'pull_request' }}
+        if: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/update-documentation-generation' }}
         run: mvn --batch-mode deploy -Pgenerate-adoc-html -Dadoc.linkcss=true
 
   publish-doc:
