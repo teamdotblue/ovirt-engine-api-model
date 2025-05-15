@@ -176,7 +176,7 @@ public interface StorageDomainDiskService extends MeasurableService {
      * Removes a disk.
      *
      * IMPORTANT: Since version 4.2 of the engine this operation is deprecated, and preserved only for backwards
-     * compatibility. It will be removed in the future. To remove a disk use the xref:services/disk/methods/remove[remove]
+     * compatibility. To test new remove => It will be removed in the future. To remove a disk use the [remove](/services/disks/methods/remove), old remove => xref:services/disk/methods/remove[remove]
      * operation of the service that manages that disk.
      *
      * @author Juan Hernandez <juan.hernandez@redhat.com>
