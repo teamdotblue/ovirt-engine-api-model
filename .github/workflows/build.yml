@@ -46,6 +46,8 @@ jobs:
       - name: Install additional build dependencies
         run: |
           dnf clean all && \
+          rm -rf /var/cache/dnf && \
+          dnf makecache --refresh || true && \
           dnf install -y ovirt-engine-api-metamodel unzip
 
       - name: Perform build
@@ -65,7 +67,7 @@ jobs:
 
       - name: Set up Maven settings.xml
         uses: s4u/maven-settings-action@v3.1.0
-        if: ${{ github.event_name != 'pull_request' || github.ref != 'refs/heads/maven-update' }}
+        if: ${{ github.event_name != 'pull_request' && github.ref != 'refs/heads/maven-update' }}
         with:
           path: /root/.m2/settings.xml
           servers: |
@@ -76,7 +78,7 @@ jobs:
             }]
 
       - name: Publish snapshot
-        if: ${{ github.event_name != 'pull_request' || github.ref != 'refs/heads/maven-update' }}
+        if: ${{ github.event_name != 'pull_request' && github.ref != 'refs/heads/maven-update' }}
         run: mvn deploy -Pgenerate-adoc-html -Dadoc.linkcss=true
 
   publish-doc:
