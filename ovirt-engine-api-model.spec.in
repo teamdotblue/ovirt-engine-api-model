@@ -43,6 +43,9 @@ Requires:	mvn(org.ovirt.engine.api:metamodel-server)
 %prep
 %setup -c -q
 
+# maven-release-plugin is not used during package build, so we can remove it
+# from pom.xml
+%pom_remove_plugin :maven-release-plugin pom.xml
 
 %build
 # Necessary to override the default JVM for xmvn in COPR, which is JDK 8
