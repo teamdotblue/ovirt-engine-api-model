@@ -66,14 +66,14 @@ jobs:
           path: /root/.m2/settings.xml
           servers: |
             [{
-              "id": "ossrh",
+              "id": "central",
               "username": "${{ secrets.OSSRH_USERNAME }}",
               "password": "${{ secrets.OSSRH_TOKEN }}"
             }]
 
       - name: Publish snapshot
         if: ${{ github.event_name != 'pull_request' }}
-        run: mvn --batch-mode deploy -Pgenerate-adoc-html -Dadoc.linkcss=true
+        run: mvn deploy -Pgenerate-adoc-html -Dadoc.linkcss=true
 
   publish-doc:
     permissions:
