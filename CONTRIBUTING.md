@@ -324,13 +324,6 @@ Open it with your browser and check your changes.
 
 ## Building
 
-NOTE: for a local build to be run for JDK17+ the following command should be executed:
-
-```sh
-$ export MAVEN_OPTS="--add-opens=java.base/java.lang=ALL-UNNAMED \
-                   --add-opens=java.base/java.lang.reflect=ALL-UNNAMED "
- ```
-
 To build this project use the usual Maven command line:
 
 ```sh

@@ -20,7 +20,6 @@ RELEASE=${VERSION[1]-1}
 git archive --format=tar HEAD | gzip -9 > rpmbuild/SOURCES/ovirt-engine-api-model-$VERSION.tar.gz
 
 # Generate AsciiDoc and HTML documentation
-export MAVEN_OPTS="--add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED"
 mvn package -Pgenerate-adoc-html -Dadoc.linkcss=true
 cp target/doc.jar rpmbuild/SOURCES/ovirt-engine-api-model-doc-$VERSION.jar
 

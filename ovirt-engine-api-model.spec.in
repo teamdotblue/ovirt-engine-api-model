@@ -49,9 +49,6 @@ Requires:	mvn(org.ovirt.engine.api:metamodel-server)
 
 %build
 
-# Needed for weld from JDK 17+
-export MAVEN_OPTS="--add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED"
-
 %mvn_build -j -d
 
 
